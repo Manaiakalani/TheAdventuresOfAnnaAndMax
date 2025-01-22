@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Shadows Into Light', cursive;
+    line-height: 1.6;
+    overflow-x: hidden;
+    background: none; /* Remove any body background */
+}
+
+header {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: none; /* Remove background */
+}
+
+header h1 {
+    font-size: 5rem;
+    background: linear-gradient(45deg, #ff6b6b, #f8e71c, #5b8dfc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient 5s infinite linear;
+    position: relative;
+    z-index: 2;
+    transform: translateY(0);
+    transition: transform 0.3s ease-out;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+section {
+    padding: 30px 20px; /* Reduced padding for a cleaner layout */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Consistent spacing between elements */
+}
+
+.photo {
+    margin: 0; /* Remove default margins */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 1s ease-out;
+}
+
+.photo img {
+    max-width: 80%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.photo img:hover {
+    transform: translate(10px, -10px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.photo img.expanded {
+    transform: scale(1.5);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.photo-description {
+    font-size: 1.2rem; /* Slightly increased font size */
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.photo-context {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 5px;
+}
+
+.parallax {
+    background: none; /* Remove parallax backgrounds */
+    height: 300px; /* Reduced height for compact layout */
+    width: 100%; /* Full width for alignment */
+    margin: 0; /* Remove default margins */
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: none; /* Remove footer background */
+}
+
+footer .social-media a {
+    margin: 0 10px;
+    font-size: 1.5rem;
+    color: #555;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer .social-media a:hover {
+    color: #0077b5; /* Adjust hover color as desired */
+}
+
+footer p {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #555;
+}
