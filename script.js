@@ -1,12 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
     const photos = document.querySelectorAll('.photo img');
-    const mainTitle = document.querySelector('#main-title');
+    const mainTitle = document.querySelector('#main-title') || document.querySelector('h1');
 
-    // Parallax scrolling for title
-    window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-        mainTitle.style.transform = `translateY(${scrollY * 0.5}px)`;
-    });
+    // Parallax scrolling for title (only if element exists)
+    if (mainTitle) {
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            mainTitle.style.transform = `translateY(${scrollY * 0.5}px)`;
+        });
+    }
 
     // Intersection observer for fade-in animation
     const observer = new IntersectionObserver(entries => {
