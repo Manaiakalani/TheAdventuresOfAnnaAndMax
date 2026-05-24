@@ -22,9 +22,12 @@
     <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
     <link rel="preconnect" href="https://analytics.manaiakalani.info">
     
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#5b8dfc">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
     <script src="script.js" defer></script>
@@ -51,25 +54,39 @@
         <h1 id="main-title">The Adventures of Anna and Max</h1>
     </header>
 
+    <main>
     <section id="content">
         <div class="photo">
-            <img src="https://images.unsplash.com/photo-1690914309564-0de732baf50c?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Mountain landscape at sunrise with golden light" loading="lazy" width="1200" height="800">
+            <img src="https://images.unsplash.com/photo-1690914309564-0de732baf50c?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                 srcset="https://images.unsplash.com/photo-1690914309564-0de732baf50c?q=80&w=600&auto=format&fit=crop 600w,
+                         https://images.unsplash.com/photo-1690914309564-0de732baf50c?q=80&w=900&auto=format&fit=crop 900w,
+                         https://images.unsplash.com/photo-1690914309564-0de732baf50c?q=80&w=1200&auto=format&fit=crop 1200w"
+                 sizes="80vw" alt="Mountain landscape at sunrise with golden light" loading="eager" width="1200" height="800">
             <p class="photo-description">Exploring the serene mountains at sunrise.</p>
             <p class="photo-context">The crisp air filled our lungs, a moment etched in gold.</p>
         </div>
 
         <div class="photo">
-            <img src="https://images.unsplash.com/photo-1698294524358-099f1dfaee9e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sunlit forest trail with dappled shadows" loading="lazy" width="1200" height="800">
+            <img src="https://images.unsplash.com/photo-1698294524358-099f1dfaee9e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                 srcset="https://images.unsplash.com/photo-1698294524358-099f1dfaee9e?q=80&w=600&auto=format&fit=crop 600w,
+                         https://images.unsplash.com/photo-1698294524358-099f1dfaee9e?q=80&w=900&auto=format&fit=crop 900w,
+                         https://images.unsplash.com/photo-1698294524358-099f1dfaee9e?q=80&w=1200&auto=format&fit=crop 1200w"
+                 sizes="80vw" alt="Sunlit forest trail with dappled shadows" loading="lazy" width="1200" height="800">
             <p class="photo-description">A breathtaking journey through the forest trails.</p>
             <p class="photo-context">Sunlight streamed through the trees, casting dancing shadows.</p>
         </div>
 
         <div class="photo">
-            <img src="https://images.unsplash.com/photo-1732580810066-0a007b9acdc4?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Serene coastal view with ocean waves" loading="lazy" width="1200" height="800">
+            <img src="https://images.unsplash.com/photo-1732580810066-0a007b9acdc4?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                 srcset="https://images.unsplash.com/photo-1732580810066-0a007b9acdc4?q=80&w=600&auto=format&fit=crop 600w,
+                         https://images.unsplash.com/photo-1732580810066-0a007b9acdc4?q=80&w=900&auto=format&fit=crop 900w,
+                         https://images.unsplash.com/photo-1732580810066-0a007b9acdc4?q=80&w=1200&auto=format&fit=crop 1200w"
+                 sizes="80vw" alt="Serene coastal view with ocean waves" loading="lazy" width="1200" height="800">
             <p class="photo-description">Capturing the essence of coastal serenity.</p>
             <p class="photo-context">The whispers of the ocean carried stories of ages past.</p>
         </div>
     </section>
+    </main>
 
     <footer>
         <div class="social-media">

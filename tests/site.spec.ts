@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import AxeBuilder from '@axe-core/playwright';
 
 test.describe('Homepage', () => {
   test.beforeEach(async ({ page }) => {
@@ -106,5 +107,20 @@ test.describe('404 Page', () => {
     await expect(page.locator('h1')).toContainText('404');
     const returnLink = page.locator('a[href="/"]');
     await expect(returnLink).toBeVisible();
+  });
+});
+
+test.describe('Accessibility', () => {
+  test('homepage has no critical accessibility violations', async ({
+    page,
+  }) => {
+    await page.goto('/');
+    const results = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+      .analyze();
+
+    expect(results.violations.filter((v) => v.impact === 'critical')).toEqual(
+      []
+    );
   });
 });

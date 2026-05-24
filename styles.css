@@ -41,7 +41,7 @@ header {
 }
 
 header h1 {
-    font-size: 5rem;
+    font-size: clamp(2rem, 8vw, 5rem);
     background: linear-gradient(45deg, #ff6b6b, #f8e71c, #5b8dfc);
     background-size: 200% 200%;
     -webkit-background-clip: text;

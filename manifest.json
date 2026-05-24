@@ -1,0 +1,17 @@
+{
+  "name": "The Adventures of Anna and Max",
+  "short_name": "Anna & Max",
+  "description": "A visual journey through nature's wonders — mountains, forests, and coastlines.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a1a2e",
+  "theme_color": "#5b8dfc",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
