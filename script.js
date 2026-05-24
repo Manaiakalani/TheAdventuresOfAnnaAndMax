@@ -23,18 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     photos.forEach(photo => {
         observer.observe(photo.closest('.photo'));
-
-        // Add click functionality for image expansion
-        photo.addEventListener('click', () => {
-            if (photo.classList.contains('expanded')) {
-                photo.classList.remove('expanded');
-            } else {
-                document.querySelectorAll('.photo img.expanded').forEach(expandedPhoto => {
-                    expandedPhoto.classList.remove('expanded');
-                });
-                photo.classList.add('expanded');
-            }
-        });
     });
 
     // Particle effect (basic example using canvas)
