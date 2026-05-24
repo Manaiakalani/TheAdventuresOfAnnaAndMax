@@ -36,6 +36,18 @@ Disallow: /
 User-agent: FacebookBot
 Disallow: /
 
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: YouBot
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+Disallow: /
+
 # Block aggressive/unwanted bots
 User-agent: AhrefsBot
 Disallow: /
@@ -55,3 +67,5 @@ Disallow: /
 # Default rule: allow all other bots
 User-agent: *
 Allow: /
+
+Sitemap: https://theadventuresofannaandmax.com/sitemap.xml
