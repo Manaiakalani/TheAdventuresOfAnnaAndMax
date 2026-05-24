@@ -59,6 +59,11 @@ header h1 {
     100% { background-position: 0% 50%; }
 }
 
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 section {
     padding: 30px 20px; /* Reduced padding for a cleaner layout */
     text-align: center;
