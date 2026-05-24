@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5b8dfc"/>
+      <stop offset="100%" stop-color="#f8e71c"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="12" fill="url(#sky)"/>
+  <!-- Sun -->
+  <circle cx="46" cy="18" r="9" fill="#f8e71c" opacity="0.9"/>
+  <!-- Back mountain -->
+  <polygon points="6,52 26,22 46,52" fill="#8ab4f8" opacity="0.7"/>
+  <!-- Front mountain -->
+  <polygon points="18,52 42,16 64,52" fill="#ff6b6b" opacity="0.85"/>
+  <!-- Snow cap -->
+  <polygon points="42,16 36,28 48,28" fill="white" opacity="0.9"/>
+  <!-- Ground -->
+  <rect x="0" y="50" width="64" height="14" rx="0" fill="#2d5a27" opacity="0.6"/>
+</svg>
