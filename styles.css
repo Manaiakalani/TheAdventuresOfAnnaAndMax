@@ -4,12 +4,31 @@
     box-sizing: border-box;
 }
 
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0 0 8px 8px;
+    z-index: 100;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
 body {
     font-family: 'Shadows Into Light', cursive;
     line-height: 1.6;
     overflow-x: hidden;
     background: none; /* Remove any body background */
 }
+
 
 header {
     position: relative;
@@ -24,6 +43,7 @@ header {
 header h1 {
     font-size: 5rem;
     background: linear-gradient(45deg, #ff6b6b, #f8e71c, #5b8dfc);
+    background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: gradient 5s infinite linear;
@@ -62,17 +82,11 @@ section {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
 }
 
 .photo img:hover {
     transform: translate(10px, -10px) scale(1.05);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
-
-.photo img.expanded {
-    transform: scale(1.5);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
 }
 
 .photo-description {
@@ -85,13 +99,6 @@ section {
     font-size: 1rem;
     color: #555;
     margin-top: 5px;
-}
-
-.parallax {
-    background: none; /* Remove parallax backgrounds */
-    height: 300px; /* Reduced height for compact layout */
-    width: 100%; /* Full width for alignment */
-    margin: 0; /* Remove default margins */
 }
 
 footer {
@@ -112,8 +119,85 @@ footer .social-media a:hover {
     color: #0077b5; /* Adjust hover color as desired */
 }
 
+a:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+}
+
 footer p {
     margin-top: 10px;
     font-size: 0.9rem;
     color: #555;
+}
+
+/* Lightbox */
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox-overlay.active {
+    opacity: 1;
+}
+
+.lightbox-image {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    cursor: default;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a1a2e;
+        color: #e0e0e0;
+    }
+
+    .photo-context {
+        color: #aaa;
+    }
+
+    footer .social-media a {
+        color: #ccc;
+    }
+
+    footer p {
+        color: #aaa;
+    }
+
+    .photo img {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .photo img:hover {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    header h1 {
+        animation: none;
+    }
+
+    .photo img:hover {
+        transform: none;
+    }
 }
