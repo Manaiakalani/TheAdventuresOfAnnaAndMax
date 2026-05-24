@@ -76,6 +76,9 @@ document.addEventListener('DOMContentLoaded', () => {
             existingOverlay.remove();
         }
 
+        const allPhotos = Array.from(document.querySelectorAll('.photo img'));
+        let currentIndex = allPhotos.findIndex(p => p.src === imgSrc);
+
         const overlay = document.createElement('div');
         overlay.className = 'lightbox-overlay';
         overlay.setAttribute('role', 'dialog');
@@ -88,11 +91,28 @@ document.addEventListener('DOMContentLoaded', () => {
         img.alt = imgAlt;
         img.className = 'lightbox-image';
 
+        const closeBtn = document.createElement('button');
+        closeBtn.className = 'lightbox-close';
+        closeBtn.setAttribute('aria-label', 'Close');
+        closeBtn.textContent = '\u00D7';
+
+        overlay.appendChild(closeBtn);
         overlay.appendChild(img);
         document.body.appendChild(overlay);
 
         const previousActiveElement = document.activeElement;
         let isClosing = false;
+
+        function navigateTo(index) {
+            if (index < 0 || index >= allPhotos.length) {
+                return;
+            }
+
+            currentIndex = index;
+            img.src = allPhotos[index].src;
+            img.alt = allPhotos[index].alt;
+            overlay.setAttribute('aria-label', allPhotos[index].alt || 'Expanded image');
+        }
 
         function close() {
             if (isClosing) {
@@ -114,6 +134,13 @@ document.addEventListener('DOMContentLoaded', () => {
         function handleKeydown(event) {
             if (event.key === 'Escape') {
                 close();
+            } else if (event.key === 'ArrowLeft') {
+                navigateTo(currentIndex - 1);
+            } else if (event.key === 'ArrowRight') {
+                navigateTo(currentIndex + 1);
+            } else if (event.key === 'Tab') {
+                event.preventDefault();
+                closeBtn.focus();
             }
         }
 
@@ -123,12 +150,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        closeBtn.addEventListener('click', close);
         overlay.addEventListener('click', handleOverlayClick);
         document.addEventListener('keydown', handleKeydown);
 
         requestAnimationFrame(() => {
             overlay.classList.add('active');
-            overlay.focus();
+            closeBtn.focus();
         });
     }
 
@@ -208,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:-1;';
+        canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;';
         document.body.appendChild(canvas);
 
         resizeCanvas();

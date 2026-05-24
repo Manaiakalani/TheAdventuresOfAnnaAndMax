@@ -45,6 +45,7 @@ header h1 {
     background: linear-gradient(45deg, #ff6b6b, #f8e71c, #5b8dfc);
     background-size: 200% 200%;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: gradient 5s infinite linear;
     position: relative;
@@ -162,6 +163,27 @@ footer p {
     border-radius: 8px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
     cursor: default;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2.5rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+    z-index: 1001;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus-visible {
+    background: rgba(255, 255, 255, 0.15);
 }
 
 @media (prefers-color-scheme: dark) {

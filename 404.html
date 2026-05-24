@@ -71,6 +71,23 @@
             transform: translateY(-2px);
             box-shadow: 0 14px 24px rgba(91, 141, 252, 0.35);
         }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+                color: #e0e0e0;
+            }
+
+            main {
+                background: rgba(30, 30, 50, 0.9);
+                border-color: #5b8dfc;
+                box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+            }
+
+            .subtext {
+                color: #aaa;
+            }
+        }
     </style>
 </head>
 <body>

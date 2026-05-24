@@ -72,6 +72,49 @@ test.describe('Homepage', () => {
     await expect(page.locator('.lightbox-overlay')).not.toBeVisible({ timeout: 5000 });
   });
 
+  test('lightbox closes on close button click', async ({ page }) => {
+    const firstImage = page.locator('.photo img').first();
+    await firstImage.scrollIntoViewIfNeeded();
+    await expect(firstImage).toBeVisible({ timeout: 10000 });
+
+    await firstImage.click();
+
+    const overlay = page.locator('.lightbox-overlay.active');
+    await expect(overlay).toBeVisible({ timeout: 5000 });
+
+    const closeBtn = page.locator('.lightbox-close');
+    await expect(closeBtn).toBeVisible();
+    await closeBtn.click();
+    await expect(page.locator('.lightbox-overlay')).not.toBeVisible({ timeout: 5000 });
+  });
+
+  test('lightbox navigates with arrow keys', async ({ page }) => {
+    const images = page.locator('.photo img');
+    const firstImage = images.first();
+    await firstImage.scrollIntoViewIfNeeded();
+    await expect(firstImage).toBeVisible({ timeout: 10000 });
+
+    // Get the src of the second image for comparison
+    const secondImgSrc = await images.nth(1).getAttribute('src');
+
+    await firstImage.click();
+
+    const overlay = page.locator('.lightbox-overlay.active');
+    await expect(overlay).toBeVisible({ timeout: 5000 });
+
+    // Navigate right to second image
+    await page.keyboard.press('ArrowRight');
+    const lightboxImg = page.locator('.lightbox-image');
+    await expect(lightboxImg).toHaveAttribute('src', secondImgSrc!);
+
+    // Navigate left back to first image
+    await page.keyboard.press('ArrowLeft');
+    const firstImgSrc = await images.first().getAttribute('src');
+    await expect(lightboxImg).toHaveAttribute('src', firstImgSrc!);
+
+    await page.keyboard.press('Escape');
+  });
+
   test('footer links are present', async ({ page }) => {
     const emailLink = page.locator('a[aria-label="Email"]');
     await expect(emailLink).toBeVisible();
