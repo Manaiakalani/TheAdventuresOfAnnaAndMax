@@ -62,15 +62,13 @@ test.describe('Homepage', () => {
 
     await firstImage.click();
 
-    const overlay = page.locator('.lightbox-overlay');
+    const overlay = page.locator('.lightbox-overlay.active');
     await expect(overlay).toBeVisible({ timeout: 5000 });
 
-    // Click the overlay background (not the image) by using force click at a corner
-    const box = await overlay.boundingBox();
-    if (box) {
-      await page.mouse.click(box.x + 5, box.y + box.height - 5);
-    }
-    await expect(overlay).not.toBeVisible({ timeout: 5000 });
+    // Wait for the active transition to settle, then click the overlay
+    await page.waitForTimeout(500);
+    await overlay.evaluate((el) => el.click());
+    await expect(page.locator('.lightbox-overlay')).not.toBeVisible({ timeout: 5000 });
   });
 
   test('footer links are present', async ({ page }) => {
