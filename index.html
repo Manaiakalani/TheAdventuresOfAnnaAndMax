@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Adventures of Anna and Max</title>
     <meta name="description" content="Join Anna and Max on their adventures across mountains, forests, and coastlines. A visual journey through nature's wonders.">
+    <link rel="canonical" href="https://theadventuresofannaandmax.com/">
     
     <!-- Open Graph -->
     <meta property="og:type" content="website">
@@ -12,15 +13,19 @@
     <meta property="og:title" content="The Adventures of Anna and Max">
     <meta property="og:description" content="A visual journey through nature's wonders.">
     <meta property="og:image" content="https://images.unsplash.com/photo-1690914309564-0de732baf50c?w=1200&h=630&fit=crop">
+    <meta property="og:site_name" content="The Adventures of Anna and Max">
     <meta property="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Adventures of Anna and Max">
+    <meta name="twitter:description" content="A visual journey through nature's wonders.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1690914309564-0de732baf50c?w=1200&h=630&fit=crop">
     
     <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://analytics.manaiakalani.info">
     
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="script.js" defer></script>
     
     <!-- Analytics -->
@@ -28,16 +33,26 @@
     src="https://analytics.manaiakalani.info/api/script.js"
     data-site-id="74ea30f13f32"
     defer
-    ></script>   
+    ></script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "The Adventures of Anna and Max",
+        "url": "https://theadventuresofannaandmax.com/",
+        "description": "Join Anna and Max on their adventures across mountains, forests, and coastlines."
+    }
+    </script>
 </head>
 <body>
+    <a href="#content" class="skip-link">Skip to content</a>
     <header>
         <h1 id="main-title">The Adventures of Anna and Max</h1>
     </header>
 
-    <section>
+    <section id="content">
         <div class="photo">
-            <img src="https://images.unsplash.com/photo-1690914309564-0de732baf50c?q=80&w=2652&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Adventure 1">
+            <img src="https://images.unsplash.com/photo-1690914309564-0de732baf50c?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Mountain landscape at sunrise with golden light" loading="lazy" width="1200" height="800">
             <p class="photo-description">Exploring the serene mountains at sunrise.</p>
             <p class="photo-context">The crisp air filled our lungs, a moment etched in gold.</p>
         </div>
@@ -45,7 +60,7 @@
         <div class="parallax"></div>
 
         <div class="photo">
-            <img src="https://images.unsplash.com/photo-1698294524358-099f1dfaee9e?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Adventure 2">
+            <img src="https://images.unsplash.com/photo-1698294524358-099f1dfaee9e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sunlit forest trail with dappled shadows" loading="lazy" width="1200" height="800">
             <p class="photo-description">A breathtaking journey through the forest trails.</p>
             <p class="photo-context">Sunlight streamed through the trees, casting dancing shadows.</p>
         </div>
@@ -53,7 +68,7 @@
         <div class="parallax"></div>
 
         <div class="photo">
-            <img src="https://images.unsplash.com/photo-1732580810066-0a007b9acdc4?q=80&w=2742&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Adventure 3">
+            <img src="https://images.unsplash.com/photo-1732580810066-0a007b9acdc4?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Serene coastal view with ocean waves" loading="lazy" width="1200" height="800">
             <p class="photo-description">Capturing the essence of coastal serenity.</p>
             <p class="photo-context">The whispers of the ocean carried stories of ages past.</p>
         </div>
@@ -62,13 +77,13 @@
     <footer>
         <div class="social-media">
             <a href="mailto:hello@theadventuresofannaandmax.com" aria-label="Email">
-                <i class="fas fa-envelope"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
             </a>
-            <a href="https://aka.ms/MaxStein" target="_blank" aria-label="Twitter">
-                <i class="fab fa-twitter"></i>
+            <a href="https://aka.ms/MaxStein" target="_blank" rel="noopener noreferrer" aria-label="Twitter (opens in new tab)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
             </a>
         </div>
-        <p>&copy; 2025 The Adventures of Anna and Max.</p>
+        <p>&copy; 2025–2026 The Adventures of Anna and Max.</p>
     </footer>
 </body>
 </html>
