@@ -4,7 +4,8 @@
   "description": "A visual journey through nature's wonders — mountains, forests, and coastlines.",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "",
+    "test": "npx playwright test"
   },
   "repository": {
     "type": "git",
