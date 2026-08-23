@@ -72,6 +72,28 @@ test.describe('Homepage', () => {
     await expect(page.locator('.lightbox-overlay')).not.toBeVisible({ timeout: 5000 });
   });
 
+  test('lightbox previous/next buttons change the image', async ({ page }) => {
+    const images = page.locator('.photo img');
+    const firstImage = images.first();
+    await firstImage.scrollIntoViewIfNeeded();
+    await expect(firstImage).toBeVisible({ timeout: 10000 });
+
+    const secondImgSrc = await images.nth(1).getAttribute('src');
+    await firstImage.click();
+
+    const overlay = page.locator('.lightbox-overlay.active');
+    await expect(overlay).toBeVisible({ timeout: 5000 });
+
+    await page.locator('.lightbox-next').click();
+    await expect(page.locator('.lightbox-image')).toHaveAttribute('src', secondImgSrc!);
+
+    await page.locator('.lightbox-prev').click();
+    const firstImgSrc = await images.first().getAttribute('src');
+    await expect(page.locator('.lightbox-image')).toHaveAttribute('src', firstImgSrc!);
+
+    await page.keyboard.press('Escape');
+  });
+
   test('lightbox closes on close button click', async ({ page }) => {
     const firstImage = page.locator('.photo img').first();
     await firstImage.scrollIntoViewIfNeeded();

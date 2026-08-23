@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
     <title>The Adventures of Anna and Max</title>
     <meta name="description" content="Join Anna and Max on their adventures across mountains, forests, and coastlines. A visual journey through nature's wonders.">
     <link rel="canonical" href="https://theadventuresofannaandmax.com/">
-    
+
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://theadventuresofannaandmax.com/">
@@ -18,20 +19,22 @@
     <meta name="twitter:title" content="The Adventures of Anna and Max">
     <meta name="twitter:description" content="A visual journey through nature's wonders.">
     <meta name="twitter:image" content="https://images.unsplash.com/photo-1690914309564-0de732baf50c?w=1200&h=630&fit=crop">
-    
+
     <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://images.unsplash.com">
     <link rel="preconnect" href="https://analytics.manaiakalani.info">
-    
+
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/favicon.svg">
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#5b8dfc">
+    <meta name="theme-color" content="#5b8dfc" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1a1a2e" media="(prefers-color-scheme: dark)">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
     <script src="script.js" defer></script>
-    
+
     <!-- Analytics -->
     <script
     src="https://analytics.manaiakalani.info/api/script.js"
@@ -51,40 +54,49 @@
 <body>
     <a href="#content" class="skip-link">Skip to content</a>
     <header>
-        <h1 id="main-title">The Adventures of Anna and Max</h1>
+        <div class="hero">
+            <h1 id="main-title">The Adventures of Anna and Max</h1>
+            <p class="tagline">A visual journal of mountains, forests, and coastlines.</p>
+        </div>
     </header>
 
     <main>
-    <section id="content">
-        <div class="photo">
+    <section id="content" aria-label="Photo journal">
+        <figure class="photo">
             <img src="https://images.unsplash.com/photo-1690914309564-0de732baf50c?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                  srcset="https://images.unsplash.com/photo-1690914309564-0de732baf50c?q=80&w=600&auto=format&fit=crop 600w,
                          https://images.unsplash.com/photo-1690914309564-0de732baf50c?q=80&w=900&auto=format&fit=crop 900w,
                          https://images.unsplash.com/photo-1690914309564-0de732baf50c?q=80&w=1200&auto=format&fit=crop 1200w"
-                 sizes="80vw" alt="Mountain landscape at sunrise with golden light" loading="eager" width="1200" height="800">
-            <p class="photo-description">Exploring the serene mountains at sunrise.</p>
-            <p class="photo-context">The crisp air filled our lungs, a moment etched in gold.</p>
-        </div>
+                 sizes="(max-width: 700px) 92vw, 800px" alt="Mountain landscape at sunrise with golden light" loading="eager" fetchpriority="high" decoding="async" width="1200" height="800">
+            <figcaption>
+                <p class="photo-description">Exploring the serene mountains at sunrise.</p>
+                <p class="photo-context">The crisp air filled our lungs, a moment etched in gold.</p>
+            </figcaption>
+        </figure>
 
-        <div class="photo">
+        <figure class="photo">
             <img src="https://images.unsplash.com/photo-1698294524358-099f1dfaee9e?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                  srcset="https://images.unsplash.com/photo-1698294524358-099f1dfaee9e?q=80&w=600&auto=format&fit=crop 600w,
                          https://images.unsplash.com/photo-1698294524358-099f1dfaee9e?q=80&w=900&auto=format&fit=crop 900w,
                          https://images.unsplash.com/photo-1698294524358-099f1dfaee9e?q=80&w=1200&auto=format&fit=crop 1200w"
-                 sizes="80vw" alt="Sunlit forest trail with dappled shadows" loading="lazy" width="1200" height="800">
-            <p class="photo-description">A breathtaking journey through the forest trails.</p>
-            <p class="photo-context">Sunlight streamed through the trees, casting dancing shadows.</p>
-        </div>
+                 sizes="(max-width: 700px) 92vw, 800px" alt="Sunlit forest trail with dappled shadows" loading="lazy" decoding="async" width="1200" height="800">
+            <figcaption>
+                <p class="photo-description">A breathtaking journey through the forest trails.</p>
+                <p class="photo-context">Sunlight streamed through the trees, casting dancing shadows.</p>
+            </figcaption>
+        </figure>
 
-        <div class="photo">
+        <figure class="photo">
             <img src="https://images.unsplash.com/photo-1732580810066-0a007b9acdc4?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                  srcset="https://images.unsplash.com/photo-1732580810066-0a007b9acdc4?q=80&w=600&auto=format&fit=crop 600w,
                          https://images.unsplash.com/photo-1732580810066-0a007b9acdc4?q=80&w=900&auto=format&fit=crop 900w,
                          https://images.unsplash.com/photo-1732580810066-0a007b9acdc4?q=80&w=1200&auto=format&fit=crop 1200w"
-                 sizes="80vw" alt="Serene coastal view with ocean waves" loading="lazy" width="1200" height="800">
-            <p class="photo-description">Capturing the essence of coastal serenity.</p>
-            <p class="photo-context">The whispers of the ocean carried stories of ages past.</p>
-        </div>
+                 sizes="(max-width: 700px) 92vw, 800px" alt="Serene coastal view with ocean waves" loading="lazy" decoding="async" width="1200" height="800">
+            <figcaption>
+                <p class="photo-description">Capturing the essence of coastal serenity.</p>
+                <p class="photo-context">The whispers of the ocean carried stories of ages past.</p>
+            </figcaption>
+        </figure>
     </section>
     </main>
 
@@ -97,7 +109,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
             </a>
         </div>
-        <p>&copy; 2025–2026 The Adventures of Anna and Max.</p>
+        <p>&copy; 2025-2026 The Adventures of Anna and Max.</p>
     </footer>
 </body>
 </html>

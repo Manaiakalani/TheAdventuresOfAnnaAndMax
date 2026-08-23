@@ -4,98 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 | The Adventures of Anna and Max</title>
-    <meta name="description" content="Trail not found — head back to The Adventures of Anna and Max for more magical moments in nature.">
+    <meta name="robots" content="noindex">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#5b8dfc" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1a1a2e" media="(prefers-color-scheme: dark)">
+    <meta name="description" content="Trail not found - head back to The Adventures of Anna and Max for more moments in nature.">
     <meta property="og:title" content="404 | The Adventures of Anna and Max">
-    <meta property="og:description" content="Trail not found — you've wandered off the map! Return home to keep exploring with Anna and Max.">
+    <meta property="og:description" content="Trail not found - you've wandered off the map. Return home to keep exploring with Anna and Max.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/favicon.svg">
     <link rel="stylesheet" href="/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
-    <style>
-        body {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            background: linear-gradient(180deg, #fef6e4 0%, #dff3ff 100%);
-            color: #2f3e46;
-        }
-
-        main {
-            width: min(100%, 680px);
-            text-align: center;
-            background: rgba(255, 255, 255, 0.88);
-            border: 3px dashed #5b8dfc;
-            border-radius: 24px;
-            padding: 3rem 2rem;
-            box-shadow: 0 18px 40px rgba(47, 62, 70, 0.15);
-        }
-
-        h1 {
-            font-size: clamp(4rem, 12vw, 7rem);
-            line-height: 1;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #ff6b6b, #f8e71c, #5b8dfc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        p {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            margin-bottom: 1rem;
-        }
-
-        .subtext {
-            font-size: 1.1rem;
-            color: #555;
-            margin-bottom: 2rem;
-        }
-
-        a {
-            display: inline-block;
-            padding: 0.85rem 1.5rem;
-            border-radius: 999px;
-            background: #5b8dfc;
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-            box-shadow: 0 10px 20px rgba(91, 141, 252, 0.25);
-        }
-
-        a:hover,
-        a:focus-visible {
-            background: #3e6fe0;
-            transform: translateY(-2px);
-            box-shadow: 0 14px 24px rgba(91, 141, 252, 0.35);
-        }
-
-        @media (prefers-color-scheme: dark) {
-            body {
-                background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
-                color: #e0e0e0;
-            }
-
-            main {
-                background: rgba(30, 30, 50, 0.9);
-                border-color: #5b8dfc;
-                box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
-            }
-
-            .subtext {
-                color: #aaa;
-            }
-        }
-    </style>
 </head>
-<body>
+<body class="page-404">
     <main>
         <h1>404</h1>
-        <p>Trail not found — you've wandered off the map! 🗺️</p>
+        <p>Trail not found - you've wandered off the map! 🗺️</p>
         <p class="subtext">Anna and Max are ready to guide you back to the next scenic stop on the adventure.</p>
-        <a href="/">Return home</a>
+        <a class="home-link" href="/">Return home</a>
     </main>
 </body>
 </html>
