@@ -22,11 +22,17 @@ test.describe('Homepage', () => {
 
     for (let i = 0; i < 3; i++) {
       const img = images.nth(i);
+      // loading="lazy" images below the 88vh hero never decode in headless CI
+      // unless they enter the viewport first.
+      await img.scrollIntoViewIfNeeded();
       await expect(img).toBeVisible({ timeout: 10000 });
-      const naturalWidth = await img.evaluate(
-        (el) => (el as HTMLImageElement).naturalWidth
-      );
-      expect(naturalWidth).toBeGreaterThan(0);
+      await expect
+        .poll(
+          async () =>
+            img.evaluate((el) => (el as HTMLImageElement).naturalWidth),
+          { timeout: 15000 }
+        )
+        .toBeGreaterThan(0);
     }
   });
 
