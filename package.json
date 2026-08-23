@@ -5,7 +5,10 @@
   "main": "script.js",
   "scripts": {
     "start": "node scripts/static-server.mjs",
-    "test": "playwright test"
+    "test": "playwright test",
+    "lint": "npm run lint:assets",
+    "lint:assets": "node scripts/stamp-assets.mjs --check",
+    "stamp": "node scripts/stamp-assets.mjs"
   },
   "repository": {
     "type": "git",
