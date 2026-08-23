@@ -1,0 +1,29 @@
+name: Lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: '.nvmrc'
+
+      # Fails if styles.css/script.js changed without re-running `npm run stamp`,
+      # which would deploy new HTML pointing at a stale, still-cached asset.
+      - name: Check asset cache-busting stamps are current
+        run: node scripts/stamp-assets.mjs --check

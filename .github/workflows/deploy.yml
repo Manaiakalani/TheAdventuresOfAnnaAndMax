@@ -29,6 +29,11 @@ jobs:
         with:
           submodules: true
           lfs: false
+      # Lint runs in a separate workflow that cannot block this one, so verify
+      # stamps here too. Deploying unstamped HTML would republish pages that
+      # keep resolving to a CDN-cached stylesheet.
+      - name: Verify asset cache-busting stamps are current
+        run: node scripts/stamp-assets.mjs --check
       - name: Require a deployment token on push
         if: github.event_name == 'push'
         env:

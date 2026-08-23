@@ -1,5 +1,14 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import {
+  ATTR,
+  EXTERNAL,
+  LIST_VALUED,
+  STAMPABLE,
+  candidates,
+  isStamped,
+  parts,
+} from '../scripts/asset-patterns.mjs';
 
 test.describe('Homepage', () => {
   test.beforeEach(async ({ page }) => {
@@ -84,18 +93,18 @@ test.describe('Homepage', () => {
     await firstImage.scrollIntoViewIfNeeded();
     await expect(firstImage).toBeVisible({ timeout: 10000 });
 
-    const secondImgSrc = await images.nth(1).getAttribute('src');
+    const secondImgSrc = await images.nth(1).evaluate((el) => (el as HTMLImageElement).src);
     await firstImage.click();
 
     const overlay = page.locator('.lightbox-overlay.active');
     await expect(overlay).toBeVisible({ timeout: 5000 });
 
     await page.locator('.lightbox-next').click();
-    await expect(page.locator('.lightbox-image')).toHaveAttribute('src', secondImgSrc!);
+    await expect(page.locator('.lightbox-image')).toHaveAttribute('src', secondImgSrc);
 
     await page.locator('.lightbox-prev').click();
-    const firstImgSrc = await images.first().getAttribute('src');
-    await expect(page.locator('.lightbox-image')).toHaveAttribute('src', firstImgSrc!);
+    const firstImgSrc = await images.first().evaluate((el) => (el as HTMLImageElement).src);
+    await expect(page.locator('.lightbox-image')).toHaveAttribute('src', firstImgSrc);
 
     await page.keyboard.press('Escape');
   });
@@ -122,23 +131,20 @@ test.describe('Homepage', () => {
     await firstImage.scrollIntoViewIfNeeded();
     await expect(firstImage).toBeVisible({ timeout: 10000 });
 
-    // Get the src of the second image for comparison
-    const secondImgSrc = await images.nth(1).getAttribute('src');
+    const secondImgSrc = await images.nth(1).evaluate((el) => (el as HTMLImageElement).src);
 
     await firstImage.click();
 
     const overlay = page.locator('.lightbox-overlay.active');
     await expect(overlay).toBeVisible({ timeout: 5000 });
 
-    // Navigate right to second image
     await page.keyboard.press('ArrowRight');
     const lightboxImg = page.locator('.lightbox-image');
-    await expect(lightboxImg).toHaveAttribute('src', secondImgSrc!);
+    await expect(lightboxImg).toHaveAttribute('src', secondImgSrc);
 
-    // Navigate left back to first image
     await page.keyboard.press('ArrowLeft');
-    const firstImgSrc = await images.first().getAttribute('src');
-    await expect(lightboxImg).toHaveAttribute('src', firstImgSrc!);
+    const firstImgSrc = await images.first().evaluate((el) => (el as HTMLImageElement).src);
+    await expect(lightboxImg).toHaveAttribute('src', firstImgSrc);
 
     await page.keyboard.press('Escape');
   });
@@ -151,15 +157,16 @@ test.describe('Homepage', () => {
       'mailto:hello@theadventuresofannaandmax.com'
     );
 
-    const twitterLink = page.locator(
-      'a[aria-label="Twitter (opens in new tab)"]'
+    const siteLink = page.locator(
+      'a[aria-label="Website (opens in new tab)"]'
     );
-    await expect(twitterLink).toBeVisible();
-    await expect(twitterLink).toHaveAttribute('target', '_blank');
+    await expect(siteLink).toBeVisible();
+    await expect(siteLink).toHaveAttribute('href', 'https://manaiakalani.com');
+    await expect(siteLink).toHaveAttribute('target', '_blank');
   });
 
   test('copyright text is visible', async ({ page }) => {
-    const copyright = page.locator('footer p');
+    const copyright = page.locator('footer p').first();
     await expect(copyright).toContainText('2025');
     await expect(copyright).toContainText('Anna and Max');
   });
@@ -168,6 +175,41 @@ test.describe('Homepage', () => {
     const skipLink = page.locator('.skip-link');
     await expect(skipLink).toHaveAttribute('href', '#content');
   });
+});
+
+test.describe('Cache busting', () => {
+  for (const [pagePath, assets] of [
+    ['/', ['styles.css', 'script.js', 'manifest.json', 'favicon.svg', 'images/']],
+    ['/404.html', ['styles.css', 'favicon.svg']],
+  ] as const) {
+    test(`${pagePath} references its assets with a content hash`, async ({
+      request,
+    }) => {
+      const html = await (await request.get(pagePath)).text();
+      const refs = [...html.matchAll(ATTR())]
+        .flatMap((m) => candidates(m[3], LIST_VALUED.test(m[1])))
+        .filter((u) => !EXTERNAL.test(u) && STAMPABLE.test(parts(u).path));
+      expect(refs.length, `expected local asset refs in ${pagePath}`).toBeGreaterThanOrEqual(
+        assets.length,
+      );
+
+      for (const ref of refs) {
+        expect(
+          isStamped(ref),
+          `${ref} must carry a ?v= hash in the query the browser actually sends`,
+        ).toBe(true);
+        expect(ref, `${ref} should be hosted locally`).not.toContain('unsplash');
+        const res = await request.get(ref.startsWith('/') ? ref : `/${ref}`);
+        expect(res.status(), `${ref} should resolve`).toBe(200);
+      }
+      for (const asset of assets) {
+        expect(
+          refs.some((r) => r.includes(asset)),
+          `${pagePath} should reference ${asset}`,
+        ).toBe(true);
+      }
+    });
+  }
 });
 
 test.describe('404 Page', () => {
