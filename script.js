@@ -53,23 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
         parallaxEnabled = false;
     }
 
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.animation = 'fadeIn 1s ease-out forwards';
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.2 });
-
-    photos.forEach(photo => {
-        const photoDiv = photo.closest('.photo');
-        if (photoDiv) {
-            photoDiv.style.opacity = '0';
-            observer.observe(photoDiv);
-        }
-    });
-
     function createLightbox(imgSrc, imgAlt) {
         const existingOverlay = document.querySelector('.lightbox-overlay');
         if (existingOverlay) {
@@ -94,14 +77,32 @@ document.addEventListener('DOMContentLoaded', () => {
         const closeBtn = document.createElement('button');
         closeBtn.className = 'lightbox-close';
         closeBtn.setAttribute('aria-label', 'Close');
+        closeBtn.type = 'button';
         closeBtn.textContent = '\u00D7';
 
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'lightbox-nav lightbox-prev';
+        prevBtn.setAttribute('aria-label', 'Previous image');
+        prevBtn.type = 'button';
+        prevBtn.textContent = '\u2039';
+
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'lightbox-nav lightbox-next';
+        nextBtn.setAttribute('aria-label', 'Next image');
+        nextBtn.type = 'button';
+        nextBtn.textContent = '\u203A';
+
         overlay.appendChild(closeBtn);
+        overlay.appendChild(prevBtn);
+        overlay.appendChild(nextBtn);
         overlay.appendChild(img);
         document.body.appendChild(overlay);
 
         const previousActiveElement = document.activeElement;
+        const previousOverflow = document.body.style.overflow;
+        const focusable = [closeBtn, prevBtn, nextBtn];
         let isClosing = false;
+        document.body.style.overflow = 'hidden';
 
         function navigateTo(index) {
             if (index < 0 || index >= allPhotos.length) {
@@ -121,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             isClosing = true;
             overlay.classList.remove('active');
+            document.body.style.overflow = previousOverflow;
             document.removeEventListener('keydown', handleKeydown);
             overlay.removeEventListener('click', handleOverlayClick);
             overlay.addEventListener('transitionend', () => {
@@ -140,7 +142,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 navigateTo(currentIndex + 1);
             } else if (event.key === 'Tab') {
                 event.preventDefault();
-                closeBtn.focus();
+                const idx = focusable.indexOf(document.activeElement);
+                const delta = event.shiftKey ? -1 : 1;
+                const next = (idx + delta + focusable.length) % focusable.length;
+                focusable[next].focus();
             }
         }
 
@@ -151,6 +156,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         closeBtn.addEventListener('click', close);
+        prevBtn.addEventListener('click', () => navigateTo(currentIndex - 1));
+        nextBtn.addEventListener('click', () => navigateTo(currentIndex + 1));
         overlay.addEventListener('click', handleOverlayClick);
         document.addEventListener('keydown', handleKeydown);
 
@@ -161,7 +168,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     photos.forEach(photo => {
-        photo.style.cursor = 'pointer';
         photo.addEventListener('click', () => {
             createLightbox(photo.src, photo.alt);
         });

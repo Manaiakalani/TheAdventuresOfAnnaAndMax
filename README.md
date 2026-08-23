@@ -12,7 +12,14 @@ A visual journey through nature's wonders — mountains, forests, and coastlines
 
 ## Development
 
-Static site — edit HTML/CSS/JS and push. Changes deploy automatically.
+Static site - edit HTML/CSS/JS and push. Changes deploy automatically.
+
+```bash
+npm install
+npx playwright install chromium
+npm start          # local server on http://127.0.0.1:4280
+npm test           # Playwright against the local tree
+```
 
 ## License
 

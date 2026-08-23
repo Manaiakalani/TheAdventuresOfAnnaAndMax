@@ -1,11 +1,11 @@
 {
   "name": "theadventuresofannaandmax",
   "version": "1.0.0",
-  "description": "A visual journey through nature's wonders — mountains, forests, and coastlines.",
+  "description": "A visual journey through nature's wonders - mountains, forests, and coastlines.",
   "main": "script.js",
   "scripts": {
-    "build": "",
-    "test": "npx playwright test"
+    "start": "node scripts/static-server.mjs",
+    "test": "playwright test"
   },
   "repository": {
     "type": "git",
@@ -13,7 +13,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "type": "commonjs",
   "bugs": {
     "url": "https://github.com/Manaiakalani/TheAdventuresOfAnnaAndMax/issues"
@@ -21,6 +21,6 @@
   "homepage": "https://github.com/Manaiakalani/TheAdventuresOfAnnaAndMax#readme",
   "devDependencies": {
     "@axe-core/playwright": "^4.11.3",
-    "@playwright/test": "^1.60.0"
+    "@playwright/test": "^1.62.1"
   }
 }
