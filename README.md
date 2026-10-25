@@ -2,6 +2,8 @@
 
 A visual journey through nature's wonders — mountains, forests, and coastlines.
 
+![A polaroid of redwoods from the journal](docs/screenshot.png)
+
 ## Stack
 
 - **Hosting:** [Azure Static Web Apps](https://azure.microsoft.com/en-us/products/app-service/static)
