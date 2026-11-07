@@ -1,6 +1,6 @@
 # 🏔️ The Adventures of Anna and Max
 
-A visual journey through nature's wonders — mountains, forests, and coastlines.
+A visual journey through nature's wonders: mountains, forests, and coastlines.
 
 ![A polaroid of redwoods from the journal](docs/screenshot.png)
 
